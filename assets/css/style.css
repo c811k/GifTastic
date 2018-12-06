@@ -1,6 +1,13 @@
-button,
-div,
-form,
-input {
+#click-me {
     margin: 5px;
+}
+
+label {
+    font-weight: bold;
+    
+}
+
+image {
+    display: relative;
+    position: left 20px;
 }
