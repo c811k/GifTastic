@@ -1,4 +1,4 @@
-var topics = ["kobe bryant", "magic johnson", "jason kidd", "steve nash", "lebron james", "kyrie irving", "james harden", "russell westbrook", "paul george", "carmelo anthony", "anthony davis", "stephen curry", "kevin durant", "giannis Antetokounmpo", "joel embiid", "john wall", "chris paul", "blake griffin", "jimmy butler", "damian lillard", "kawhi leonard", "kemba walker"];
+var topics = ["kobe bryant", "magic johnson", "jason kidd", "steve nash", "lebron james", "kyrie irving", "james harden", "anthony davis", "stephen curry", "kevin durant", "giannis Antetokounmpo", "joel embiid", "john wall", "chris paul", "blake griffin", "damian lillard", "kawhi leonard"];
 
 function display() {
     $("#gifs-view").empty();
@@ -13,14 +13,14 @@ function display() {
         var results = response.data;
 
         for(var i = 0; i < results.length; i++) {
-            var topicDiv = $("<div>");
+            var topicDiv = $("<div id='gif-image'>");
             var p = $("<p>").text("Rating: " + results[i].rating);
             var image = $("<img>")
-                .addClass("gif position-static")
-                .attr("src", results[i].images.fixed_width_still.url)
+                .addClass("gif")
+                .attr("src", results[i].images.fixed_height_small_still.url)
                 .attr("data-state", "still")
-                .attr("data-animate", results[i].images.fixed_width.url)
-                .attr("data-still", results[i].images.fixed_width_still.url);
+                .attr("data-animate", results[i].images.fixed_height_small.url)
+                .attr("data-still", results[i].images.fixed_height_small_still.url);
             topicDiv.append(p, image);
             $("#gifs-view").append(topicDiv);
         }
@@ -50,6 +50,7 @@ function renderButtons() {
         btn.attr("data-name", topics[i]);
         btn.text(topics[i]);
         $("#topics-view").append(btn);
+        console.log(btn);
     }
 }
 
@@ -57,7 +58,7 @@ function renderButtons() {
 
 $("#add-topic").on("click", function(event) {
     event.preventDefault();
-    var input = $("#topic-input").val();
+    var input = $("#topic-input").val().trim();
     topics.push(input);
     renderButtons();
 });

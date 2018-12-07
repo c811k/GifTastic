@@ -7,7 +7,9 @@ label {
     
 }
 
-image {
-    display: relative;
-    position: left 20px;
+
+#gif-image {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 20px;
 }
